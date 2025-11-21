@@ -15,8 +15,11 @@ mongoose
   .catch((e) => console.log(e));
 // cors config
 const corsOption = {
-  origin:['http://localhost:5173']
+  origin: process.env.NODE_ENV === 'production'
+    ? ['https://expense-frontend-odtx.onrender.com']
+    : ['http://localhost:5173']
 };
+
 app.use(cors(corsOption))
 // middleware
 app.use(express.json());
