@@ -14,11 +14,17 @@ mongoose
   .then(() => console.log("DB Connected"))
   .catch((e) => console.log(e));
 // cors config
-const corsOption = {
-  origin: process.env.NODE_ENV === 'production'
-    ? ['https://expense-frontend-odtx.onrender.com']
-    : ['http://localhost:5173']
-};
+// const corsOption = {
+//   origin: process.env.NODE_ENV === 'production'
+//     ? ['https://expense-frontend-odtx.onrender.com']
+//     : ['http://localhost:5173']
+// };
+const cors = require("cors");
+app.use(cors({
+  origin: "https://expense-backend-78d0.onrender.com",
+  credentials: true
+}));
+
 
 app.use(cors(corsOption))
 // middleware
